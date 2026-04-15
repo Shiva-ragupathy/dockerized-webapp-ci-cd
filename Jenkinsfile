@@ -36,5 +36,14 @@ pipeline {
                 '''
             }
         }
+
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh './deploy.sh'
+            }
+        }
     }
 }
