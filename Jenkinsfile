@@ -30,7 +30,7 @@ pipeline {
         stage('Push to Dev') {
             when {
                 branch 'dev'
-            }
+           }
             steps {
                 sh '''
                 docker tag devops-app $DOCKER_USER/dev:latest
@@ -60,4 +60,4 @@ pipeline {
             }
         }
     }
-}}
+}
