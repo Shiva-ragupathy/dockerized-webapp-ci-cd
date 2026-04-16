@@ -3,35 +3,26 @@ pipeline {
 
     environment {
         DOCKER_USER = "shivark1996"
-        DOCKER_CREDS = "dockerhub-creds"
-        IMAGE_NAME = "devops-app"
     }
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build Image') {
             steps {
-                script {
-                    IMAGE_TAG = "${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
-                    sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
-                }
+                sh 'docker build -t devops-app .'
             }
         }
 
         stage('Docker Login') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: DOCKER_CREDS,
-                    usernameVariable: 'USERNAME',
-                    passwordVariable: 'PASSWORD'
+                    credentialsId: 'docker-cred',
+                    usernameVariable: 'DOCKER_USERNAME',
+                    passwordVariable: 'DOCKER_PASSWORD'
                 )]) {
-                    sh 'echo $PASSWORD | docker login -u $USERNAME --password-stdin'
+                    sh '''
+                    echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+                    '''
                 }
             }
         }
@@ -41,22 +32,22 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                sh """
-                docker tag $IMAGE_NAME:$IMAGE_TAG $DOCKER_USER/dev:$IMAGE_TAG
-                docker push $DOCKER_USER/dev:$IMAGE_TAG
-                """
+                sh '''
+                docker tag devops-app $DOCKER_USER/dev:latest
+                docker push $DOCKER_USER/dev:latest
+                '''
             }
         }
 
         stage('Push to Prod') {
             when {
-                branch 'main'   // change to 'master' if needed
+                branch 'main'
             }
             steps {
-                sh """
-                docker tag $IMAGE_NAME:$IMAGE_TAG $DOCKER_USER/prod:$IMAGE_TAG
-                docker push $DOCKER_USER/prod:$IMAGE_TAG
-                """
+                sh '''
+                docker tag devops-app $DOCKER_USER/prod:latest
+                docker push $DOCKER_USER/prod:latest
+                '''
             }
         }
 
@@ -65,9 +56,8 @@ pipeline {
                 branch 'main'
             }
             steps {
-                sh 'chmod +x deploy.sh'
                 sh './deploy.sh'
             }
         }
     }
-}
+}}
