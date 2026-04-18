@@ -29,8 +29,10 @@ pipeline {
 
         stage('Push to Dev') {
             when {
-                branch 'dev'
-           }
+                expression {
+                    env.GIT_BRANCH?.contains("dev")
+                }
+            }
             steps {
                 sh '''
                 docker tag devops-app $DOCKER_USER/dev:latest
@@ -41,7 +43,9 @@ pipeline {
 
         stage('Push to Prod') {
             when {
-                branch 'main'
+                expression {
+                    env.GIT_BRANCH?.contains("main")
+                }
             }
             steps {
                 sh '''
@@ -53,7 +57,9 @@ pipeline {
 
         stage('Deploy') {
             when {
-                branch 'main'
+                expression {
+                    env.GIT_BRANCH?.contains("main")
+                }
             }
             steps {
                 sh './deploy.sh'
