@@ -48,4 +48,4 @@ Uptime Kuma (Health Monitoring)
 
 ## 🐳 Docker Hub Image
 
-![Docker Hub](dockerhub.png)
+![Docker Hub](screenshot/dockerhub.png)
