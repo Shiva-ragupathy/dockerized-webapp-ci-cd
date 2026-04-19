@@ -46,6 +46,8 @@ Uptime Kuma (Health Monitoring)
 ├── .gitignore
 └── build/
 
+```
+
 ## 🐳 Docker Hub Image
 
 ![Docker Hub](screenshots/dockerhub.png)
