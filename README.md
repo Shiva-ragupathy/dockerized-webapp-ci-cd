@@ -59,3 +59,7 @@ Uptime Kuma (Health Monitoring)
 ## 🌐 Web Application UI
 
 ![Web Application](screenshots/uptime.png)
+
+## 📘 Documentation
+
+👉 [View Full Guide](devops-cicd-guide.pdf)
