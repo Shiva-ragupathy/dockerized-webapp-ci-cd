@@ -62,4 +62,4 @@ Uptime Kuma (Health Monitoring)
 
 ## 📘 Documentation
 
-👉 [View Full Guide](devops-cicd-guide (1).pdf)
+👉 [View Full Guide](devops-cicd-guide.pdf)
