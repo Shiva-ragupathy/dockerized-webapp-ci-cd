@@ -13,9 +13,9 @@ The system demonstrates real-world DevOps practices including:
 
 ---
 
-## 🧭 Architecture
+## 🧭 End-to-End CI/CD Pipeline Flow
 
-```text
+```
 GitHub (Source Code)
         ↓
 Jenkins (CI/CD Pipeline)
@@ -32,15 +32,10 @@ Web Application (Port 80 - Public Access)
         ↓
 Uptime Kuma (Health Monitoring)
 
-⚙️ Tech Stack
-Git & GitHub
-Jenkins (CI/CD)
-Docker & Docker Compose
-Docker Hub
-AWS EC2 (Ubuntu 22.04)
-Bash Scripting
-Uptime Kuma (Monitoring)
+```
+## 📂 Project Structure
 
+```text
 .
 ├── Dockerfile
 ├── docker-compose.yml
