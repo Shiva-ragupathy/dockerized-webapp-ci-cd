@@ -58,4 +58,4 @@ Uptime Kuma (Health Monitoring)
 
 ## 🌐 Web Application UI
 
-![Web Application](screenshots/website.png)
+![Web Application](screenshots/uptime.png)
