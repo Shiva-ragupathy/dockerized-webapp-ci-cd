@@ -1,34 +1,52 @@
-# 🚀 DevOps CI/CD Pipeline Project – Dockerized Application Deployment on AWS EC2
+# 🚀 DevOps CI/CD Pipeline – Dockerized Application on AWS EC2
 
-## 📌 Project Overview
+## 📌 Overview
 
-This project demonstrates a complete end-to-end **DevOps CI/CD pipeline** for automating application build, containerization, deployment, and monitoring using modern DevOps tools and cloud infrastructure.
+This project implements a production-style **CI/CD pipeline** that automates the build, containerization, deployment, and monitoring of a web application using modern DevOps tools.
 
-The system ensures:
-- Automated build and deployment pipeline
-- Containerized application using Docker
-- Cloud deployment on AWS EC2
-- Image management using Docker Hub
+The system demonstrates real-world DevOps practices including:
 - Continuous Integration using Jenkins
-- Application monitoring using open-source tools
+- Containerization using Docker
+- Image management using Docker Hub
+- Automated deployment on AWS EC2
+- Infrastructure monitoring using Uptime Kuma
 
 ---
 
-## 🏗️ System Architecture
+## 🧭 Architecture
 
 ```text
-GitHub (Source Code Management)
+GitHub (Source Code)
         ↓
-Jenkins (CI/CD Automation)
+Jenkins (CI/CD Pipeline)
         ↓
-Docker Image Build
+Docker Build Stage
         ↓
 Docker Hub (Image Registry)
         ↓
-AWS EC2 Instance (Deployment Server)
+AWS EC2 (Production Server)
         ↓
-Docker / Docker Compose (Runtime)
+Docker / Docker Compose Runtime
         ↓
 Web Application (Port 80 - Public Access)
         ↓
-Uptime Kuma (Monitoring System)
+Uptime Kuma (Health Monitoring)
+
+⚙️ Tech Stack
+Git & GitHub
+Jenkins (CI/CD)
+Docker & Docker Compose
+Docker Hub
+AWS EC2 (Ubuntu 22.04)
+Bash Scripting
+Uptime Kuma (Monitoring)
+
+.
+├── Dockerfile
+├── docker-compose.yml
+├── Jenkinsfile
+├── build.sh
+├── deploy.sh
+├── .dockerignore
+├── .gitignore
+└── build/
